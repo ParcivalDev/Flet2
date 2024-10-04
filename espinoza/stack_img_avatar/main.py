@@ -70,7 +70,7 @@ def main(page: ft.Page):
                          width=200, border_radius=10)
     # Imagen local
     image_local = ft.Image(
-        src="espinoza/stack/images/imagen.png", width=200, border_radius=10)
+        src="espinoza/stack_img_avatar/images/imagen.png", width=200, border_radius=10)
 
 
     # Creamos una fila para mostrar ambas imágenes con un texto por encima
