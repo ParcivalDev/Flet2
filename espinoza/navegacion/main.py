@@ -2,7 +2,7 @@ import flet as ft
 from flet import ControlEvent
 from juego import AdivinaNumero
 from widgets import EjemplosWidgets
-
+from password import GeneradorPassword
 
 def main(page: ft.Page):
     page.title = "FletApp"
@@ -16,6 +16,7 @@ def main(page: ft.Page):
     # Inicialización de las clases de juego y widgets
     juego = AdivinaNumero(page)
     widgets = EjemplosWidgets(page)
+    generador_password = GeneradorPassword(page)
 
     # Función para manejar los cambios en la barra de navegación
     def navegacion_change(e: ControlEvent):
@@ -103,6 +104,15 @@ def main(page: ft.Page):
         ],
         bgcolor=ft.colors.BLUE_800,
         indicator_color=ft.colors.AMBER
+    )
+    
+    def mostrar_generador_password(e):
+        generador_password.mostrar_dialogo()
+    
+    page.floating_action_button = ft.FloatingActionButton(
+        icon=ft.icons.PASSWORD,
+        on_click=mostrar_generador_password,
+        tooltip="Generar Contraseña"
     )
 
     # Iniciar la aplicación mostrando la vista de inicio
