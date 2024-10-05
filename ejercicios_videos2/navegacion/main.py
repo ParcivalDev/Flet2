@@ -4,6 +4,7 @@ from juego import AdivinaNumero
 from widgets import EjemplosWidgets
 from password import GeneradorPassword
 
+
 def main(page: ft.Page):
     page.title = "FletApp"
     page.bgcolor = ft.colors.BLUE_GREY_900
@@ -105,10 +106,10 @@ def main(page: ft.Page):
         bgcolor=ft.colors.BLUE_800,
         indicator_color=ft.colors.AMBER
     )
-    
+
     def mostrar_generador_password(e):
         generador_password.mostrar_dialogo()
-    
+
     page.floating_action_button = ft.FloatingActionButton(
         icon=ft.icons.PASSWORD,
         on_click=mostrar_generador_password,
