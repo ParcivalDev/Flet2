@@ -9,7 +9,7 @@ def main(page: ft.Page):
     page.padding = 20
     # Alineamos horizontalmente el contenido al centro
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.scroll = ft.ScrollMode.ADAPTIVE
+    page.scroll = ft.ScrollMode.AUTO
 
     # Definimos una función para crear ejemplos de widgets
     # def create_widget_example(title, description, content):
@@ -36,10 +36,11 @@ def main(page: ft.Page):
             bgcolor=ft.colors.BLUE_GREY_700,
             # Añadimos una sombra para dar profundidad
             shadow=ft.BoxShadow(
-                spread_radius=1, # Determina cuánto se expande la sombra
-                blur_radius=10, # Define qué tan difusa o borrosa es la sombra
+                spread_radius=1,  # Determina cuánto se expande la sombra
+                blur_radius=10,  # Define qué tan difusa o borrosa es la sombra
                 color=ft.colors.BLACK54,
-                offset=ft.Offset(20, 10), # El offset determina la posición de la sombra en relación con el contenedor
+                # El offset determina la posición de la sombra en relación con el contenedor
+                offset=ft.Offset(20, 10),
             )
         )
 
@@ -66,12 +67,20 @@ def main(page: ft.Page):
 
     # Creamos ejemplos de Image
     # Imagen desde URL
-    image_url = ft.Image(src="https://picsum.photos/200/200",
-                         width=200, border_radius=10)
-    # Imagen local
+    image_url = ft.Image(
+        src="https://picsum.photos/200/200",
+        width=200,
+        height=200,
+        fit=ft.ImageFit.COVER,
+        border_radius=10
+    )
     image_local = ft.Image(
-        src="espinoza/stack_img_avatar/images/imagen.png", width=200, border_radius=10)
-
+        src="espinoza/stack_img_avatar/images/imagen.png",
+        width=200,
+        height=200,
+        fit=ft.ImageFit.COVER,
+        border_radius=10
+    )
 
     # Creamos una fila para mostrar ambas imágenes con un texto por encima
     row_image = ft.Row([
@@ -85,7 +94,6 @@ def main(page: ft.Page):
     image_example = create_widget_example(
         "Image", "Comparación de imagen de Internet e imagen local", row_image
     )
-
 
     # Creamos ejemplos de CircleAvatar
     # Avatar con imagen
@@ -109,7 +117,6 @@ def main(page: ft.Page):
             [ft.Text("Con texto", size=14, color=ft.colors.GREY_300), avatar_with_text]),
     ], alignment=ft.MainAxisAlignment.SPACE_AROUND, spacing=20)
 
-
     avatar_example = create_widget_example(
         "CircleAvatar", "Ejemplos de CircleAvatar con imagen y texto", row_avatar
     )
@@ -130,12 +137,17 @@ def main(page: ft.Page):
         margin=ft.margin.symmetric(vertical=20)
     )
 
-    page.add(
-        title,
-        divider_with_margin,
-        stack_example,
-        image_example,
-        avatar_example,
+    content = ft.ListView(
+        [
+            title,
+            divider_with_margin,
+            stack_example,
+            image_example,
+            avatar_example,
+        ],
+        expand=True,
     )
 
+    page.add(content)
+    
 ft.app(main)

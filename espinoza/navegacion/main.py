@@ -10,7 +10,7 @@ def main(page: ft.Page):
     page.padding = 20
     page.window.resizable = False
     page.window.width = 600
-    page.window.height = 700
+    page.window.height = 800
     page.theme_mode = ft.ThemeMode.DARK
 
     # Inicialización de las clases de juego y widgets
@@ -66,7 +66,7 @@ def main(page: ft.Page):
                 margin=ft.margin.only(bottom=30)
             ),
             # Tarjetas de características
-            ft.Row([
+            ft.Column([
                 crear_tarjeta(
                     "Juego", "Prueba tus habilidades con 'Adivina el Número'", ft.icons.GAMES),
                 crear_tarjeta(
@@ -85,7 +85,7 @@ def main(page: ft.Page):
                 ft.Text(descripcion, size=14, color=ft.colors.GREY_400,
                         text_align=ft.TextAlign.JUSTIFY)
             ], alignment=ft.MainAxisAlignment.CENTER, spacing=10),
-            width=250,
+            width=450,
             height=200,
             border=ft.border.all(1, ft.colors.BLUE_200),
             border_radius=10,

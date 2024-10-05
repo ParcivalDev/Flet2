@@ -11,7 +11,7 @@ class GeneradorPassword:
 
     def init_components(self):
         self.titulo = ft.Text("Generador de contraseñas",
-                              size=32, weight=ft.FontWeight.BOLD)
+                              size=24, weight=ft.FontWeight.BOLD)
         self.etiqueta_password = ft.TextField(
             read_only=True,
             width=400,
@@ -33,11 +33,11 @@ class GeneradorPassword:
         )
 
         self.mayusculas_switch = ft.Switch(
-            label="Incluir mayúsculas", value=True, on_change=self.actualiza_pass)
+            label="Mayúsculas", value=True, on_change=self.actualiza_pass, scale=0.9)
         self.numeros_switch = ft.Switch(
-            label="Incluir números", value=True, on_change=self.actualiza_pass)
+            label="Números", value=True, on_change=self.actualiza_pass, scale=0.9)
         self.simbolos_switch = ft.Switch(
-            label="Incluir símbolos", value=True, on_change=self.actualiza_pass)
+            label="Símbolos", value=True, on_change=self.actualiza_pass, scale=0.9)
 
         self.contenedor_principal = ft.Container(
             content=ft.Column([
@@ -47,15 +47,16 @@ class GeneradorPassword:
                 ft.Container(self.etiqueta_fuerza,
                              alignment=ft.alignment.center),
                 self.slider_pass,
-                self.mayusculas_switch,
-                self.numeros_switch,
-                self.simbolos_switch,
+                ft.Row([self.mayusculas_switch,
+                        self.numeros_switch,
+                        self.simbolos_switch]),
                 ft.Row([self.boton_generador, self.boton_copiar],
                        alignment=ft.MainAxisAlignment.CENTER)
-            ], spacing=20, alignment=ft.MainAxisAlignment.CENTER),
+            ], spacing=15, alignment=ft.MainAxisAlignment.CENTER),
             padding=20,
             bgcolor=ft.colors.GREY_800,
-            border_radius=20
+            border_radius=20,
+            height=400
         )
 
         # Define una función para generar contraseñas
@@ -108,7 +109,7 @@ class GeneradorPassword:
             ft.Text("Contraseña copiada al portapapeles"))
         self.page.overlay.append(notificacion)
         notificacion.open = True  # Muestra el mensaje de notificación
-        self.page.update()  # Actualiza la página
+        self.page.update()
 
     def mostrar_dialogo(self):
         dialog = ft.AlertDialog(
@@ -116,7 +117,7 @@ class GeneradorPassword:
             actions=[
                 ft.TextButton(
                     "Cerrar", on_click=lambda _: self.cerrar_dialogo(dialog))
-            ],
+            ]
         )
         self.page.overlay.append(dialog)
         dialog.open = True

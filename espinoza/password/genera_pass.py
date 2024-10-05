@@ -56,7 +56,7 @@ def main(page: ft.Page):
         notificacion = ft.SnackBar(ft.Text("Contraseña copiada al portapapeles"))  # Crea un mensaje de notificación
         page.overlay.append(notificacion)
         notificacion.open = True  # Muestra el mensaje de notificación
-        page.update()  # Actualiza la página
+        page.update()
 
 
 
