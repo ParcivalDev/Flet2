@@ -60,7 +60,7 @@ class EjemplosWidgets:
             border_radius=10
         )
         image_local = ft.Image(
-            src="espinoza/stack_img_avatar/images/imagen.png",
+            src="../stack_img_avatar/images/imagen.png",
             width=200,
             height=200,
             fit=ft.ImageFit.COVER,

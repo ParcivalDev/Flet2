@@ -143,6 +143,7 @@ def main(page: ft.Page):
         titulo,
         input_numero,
         verificar_btn,
+        resultado,
         intentos_text,
         mejor_puntuacion_text,
         barra_progreso,
